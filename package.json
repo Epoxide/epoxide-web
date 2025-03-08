@@ -16,7 +16,7 @@
   "type": "module",
   "engines": {
     "node": "22.x.x",
-    "npm": "11.x.x"
+    "npm": ">=10"
   },
   "scripts": {
     "build": "npm run build -w @epoxide/web-next",

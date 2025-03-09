@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import styles from './page.module.scss'
 
 export default function Mammali() {
-  const endTime = new Date('2025-06-10T08:00:00Z').getTime()
+  const endTime = new Date('2025-06-12T08:00:00Z').getTime()
   const [currentTime, setCurrentTime] = useState(Date.now())
   const [remainingTime, setRemainingTime] = useState(endTime - currentTime)
   const [isClient, setIsClient] = useState(false)

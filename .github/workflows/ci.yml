@@ -105,7 +105,7 @@ jobs:
       - name: Get last workflow run SHA
         id: lastWorkflowRun
         run: |
-          export SHA=$(gh run list --json headSha | jq -r '.[1].headSha')
+          export SHA=$(gh run list --branch main --json headSha,conclusion | jq -r 'map(select(.conclusion == "success")) | .[0].headSha')
           echo "lastWorkflowRunSha=$SHA" >> "$GITHUB_OUTPUT"
         env:
           GH_TOKEN: ${{ github.token }}

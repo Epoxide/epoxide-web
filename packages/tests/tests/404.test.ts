@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
 import { NOT_FOUND } from '@epoxide/web-constants'
+import { VIEWPORT_SIZES } from '../viewportSizes'
 
 test('has h1 with not found text', async ({ page }) => {
   await page.goto('/non-existing-route')
@@ -19,15 +20,31 @@ test('uses layout', async ({ page }) => {
 
 test('matches desktop snapshot', async ({ page }) => {
   await page.goto('/non-existing-route')
-  await page.setViewportSize({ width: 1920, height: 1080 })
+  await page.setViewportSize(VIEWPORT_SIZES.DESKTOP)
   await expect(page).toHaveScreenshot(
     '../snapshots/404.test.ts.matches-desktop-snapshot.png',
   )
 })
 
+test('matches laptop snapshot', async ({ page }) => {
+  await page.goto('/non-existing-route')
+  await page.setViewportSize(VIEWPORT_SIZES.LAPTOP)
+  await expect(page).toHaveScreenshot(
+    '../snapshots/404.test.ts.matches-laptop-snapshot.png',
+  )
+})
+
+test('matches tablet snapshot', async ({ page }) => {
+  await page.goto('/non-existing-route')
+  await page.setViewportSize(VIEWPORT_SIZES.TABLET)
+  await expect(page).toHaveScreenshot(
+    '../snapshots/404.test.ts.matches-tablet-snapshot.png',
+  )
+})
+
 test('matches mobile snapshot', async ({ page }) => {
   await page.goto('/non-existing-route')
-  await page.setViewportSize({ width: 393, height: 852 })
+  await page.setViewportSize(VIEWPORT_SIZES.MOBILE)
   await expect(page).toHaveScreenshot(
     '../snapshots/404.test.ts.matches-mobile-snapshot.png',
   )

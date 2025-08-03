@@ -1,0 +1,44 @@
+name: "PR Title Checker"
+on:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - labeled
+      - unlabeled
+jobs:
+  check:
+    name: "Check PR Title"
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - uses: thehanimo/pr-title-checker@v1.4.3
+        id: check
+        continue-on-error: true
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          pass_on_octokit_error: false
+      - name: Add comment to fix PR title
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: ${{ steps.check.outputs.success == 'false' }}
+        with:
+          header: 'PR Title Check'
+          recreate: true
+          message: |
+              ### 🚨 PR Title Needs Formatting
+              The title of this PR needs to be formatted correctly.
+              PR titles should follow conventional commits.
+              Please update the title to match the format `type(<optional scope>): description`.
+      - name: Add comment that PR title is fixed
+        if: ${{ steps.check.outputs.success == 'true' }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: 'PR Title Check'
+          recreate: true
+          only_update: true
+          message: |
+              ### ✅ PR Title Formatted Correctly
+              The title of this PR has been updated to match the correct format. Thank you!

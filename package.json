@@ -57,7 +57,7 @@
     "sass": "^1.89.2",
     "tslib": "^2.8.1",
     "typescript": "^5.9.2",
-    "vite": "^5.4.19"
+    "vite": "^7.0.6"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.0.0"

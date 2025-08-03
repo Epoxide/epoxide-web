@@ -59,6 +59,8 @@ defineProps({
 
     img {
       filter: grayscale(100%);
+      height: 30px;
+      width: 30px;
     }
 
     @media screen and (max-width: breakpoints.$breakpoint-sm) {

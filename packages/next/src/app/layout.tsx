@@ -1,13 +1,13 @@
 import '../styles/globals.scss'
 import styles from './layout.module.scss'
-import { Raleway } from 'next/font/google'
+import localFont from 'next/font/local'
 import { META } from '@epoxide/web-constants'
 import type { Metadata, Viewport } from 'next'
 import { Footer } from '@/components/Footer'
 import epoxideLogo from '../../public/images/epoxide-logo-circle.svg'
 import { StructuredData } from '@/components/StructuredData'
 
-const raleway = Raleway({ subsets: ['latin'] })
+const raleway = localFont({ src: './Raleway.ttf', display: 'swap' })
 
 export const metadata: Metadata = {
   title: META.TITLE,

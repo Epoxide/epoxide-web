@@ -19,7 +19,7 @@ export default defineNuxtConfig({
       redirect: { to: 'https://old.epoxide.se/replay', statusCode: 301 },
     },
   },
-  compatibilityDate: '2024-11-04',
+  compatibilityDate: '2025-08-03',
   vite: {
     css: {
       preprocessorOptions: {

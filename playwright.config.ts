@@ -9,6 +9,9 @@ const config: PlaywrightTestConfig = {
   testDir: '../tests/tests',
   snapshotPathTemplate: '../tests/snapshots/{testFileName}.{testName}{ext}',
   retries: 2,
+  fullyParallel: true,
+  reporter: process.env.CI ? [['html', { open: 'never' }], ['list']] : 'list',
+  workers: process.env.CI ? 2 : undefined,
 }
 
 export default config

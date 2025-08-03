@@ -81,7 +81,7 @@ jobs:
         if: always()
         with:
           name: playwright-report
-          path: packages/next/test-results/
+          path: packages/next/playwright-report/
           retention-days: 30
       - name: Comment on PR with report link
         uses: thollander/actions-comment-pull-request@v3

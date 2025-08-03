@@ -3,6 +3,7 @@ node_modules
 !.vscode/settings.json
 !.vscode/extensions.json
 !.vscode/**/extensions.json
+playwright-report
 test-results
 .nx
 .DS_Store

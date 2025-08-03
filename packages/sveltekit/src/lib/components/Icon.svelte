@@ -5,4 +5,4 @@
     undefined
 </script>
 
-<i class={`fa-${iconLibrary} fa-${icon}${size ? ` fa-${size}` : ''}`} />
+<i class={`fa-${iconLibrary} fa-${icon}${size ? ` fa-${size}` : ''}`}></i>

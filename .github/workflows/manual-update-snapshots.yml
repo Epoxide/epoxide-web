@@ -1,0 +1,32 @@
+name: Manual Update Snapshots
+on:
+  workflow_dispatch:
+jobs:
+  update-snapshots:
+    name: Update Snapshots
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.54.2-noble # Match the version in package.json
+      options: --user 1001
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+          cache: 'npm'
+      - name: Update npm version
+        run: npm update npm -g
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Playwright update snapshots
+        run: npm run update-snapshots
+      - name: Commit and push updated snapshots
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'test: update snapshots'
+          commit_options: '--no-verify'
+          push_options: '--no-verify'

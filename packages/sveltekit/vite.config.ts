@@ -8,13 +8,6 @@ const config: UserConfig = {
       allow: ['../../packages'],
     },
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern',
-      },
-    },
-  },
 }
 
 export default config

@@ -1,4 +1,4 @@
 [phase.name]
-  nixpkgsArchive = '5148520bfab61f99fd25fb9ff7bfbb50dad3c9db'
+  nixpkgsArchive = '11cb3517b3af6af300dd6c055aeda73c9bf52c48'# https://github.com/NixOS/nixpkgs/tags
 [phases.install]
   cmds = ['npm update npm -g', 'npm ci']

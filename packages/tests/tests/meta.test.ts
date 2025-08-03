@@ -4,7 +4,7 @@ import { META } from '@epoxide/web-constants'
 test('has favicon', async ({ page }) => {
   await page.goto('/')
   await expect(
-    await page.locator('link[rel="icon"]').getAttribute('href'),
+    await page.locator('link[rel="icon"]').first().getAttribute('href'),
   ).toContain('/favicon.ico')
 })
 

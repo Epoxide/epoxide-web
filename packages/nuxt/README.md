@@ -1,3 +1,3 @@
-# epoxide-web using Nuxt 3
+# epoxide-web using Nuxt 4
 
-This workspace is built using Nuxt 3.
+This workspace is built using Nuxt 4.

@@ -94,7 +94,7 @@ This is a monorepo for the web located at [epoxide.se](https://epoxide.se). It i
         <img src="https://github.com/Epoxide/epoxide-web/blob/main/packages/assets/images/docs/nuxt.png?raw=true" alt="Nuxt" height="20px" />
         <span>Nuxt</span>
       </td>
-      <td>3</td>
+      <td>4</td>
       <td>
         <img src="https://github.com/Epoxide/epoxide-web/blob/main/packages/assets/images/docs/vue.png?raw=true" alt="Vue" height="20px" />
         <span>Vue</span>

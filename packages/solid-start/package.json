@@ -22,13 +22,13 @@
     "test": "playwright test"
   },
   "devDependencies": {
-    "eslint-plugin-solid": "^0.14.3"
+    "eslint-plugin-solid": "^0.14.5"
   },
   "dependencies": {
     "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^0.15.0",
+    "@solidjs/router": "^0.15.3",
     "@solidjs/start": "^1.0.10",
-    "solid-js": "^1.9.3",
+    "solid-js": "^1.9.7",
     "vinxi": "^0.4.3"
   }
 }

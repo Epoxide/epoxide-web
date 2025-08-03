@@ -1,4 +1,4 @@
 [phase.name]
   nixpkgsArchive = '5148520bfab61f99fd25fb9ff7bfbb50dad3c9db'
 [phases.install]
-  cmds = ['npm update npm -g']
+  cmds = ['npm update npm -g', 'npm ci']

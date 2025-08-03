@@ -3,6 +3,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/stylistic',
+    'plugin:promise/recommended',
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
@@ -17,6 +18,8 @@ module.exports = {
     'prefer-template': 'error',
     'no-useless-concat': 'error',
     quotes: ['error', 'single', { avoidEscape: true }],
+    'promise/prefer-await-to-callbacks': 'error',
+    'promise/prefer-await-to-then': 'error',
     '@typescript-eslint/consistent-type-imports': 'error',
   },
 }

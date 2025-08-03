@@ -28,9 +28,6 @@ test('matches desktop snapshot', async ({ page }) => {
   await page.setViewportSize({ width: 1920, height: 1080 })
   await expect(page).toHaveScreenshot(
     '../snapshots/home.test.ts.matches-desktop-snapshot.png',
-    {
-      maxDiffPixelRatio: 0.02,
-    },
   )
 })
 
@@ -39,8 +36,5 @@ test('matches mobile snapshot', async ({ page }) => {
   await page.setViewportSize({ width: 393, height: 852 })
   await expect(page).toHaveScreenshot(
     '../snapshots/home.test.ts.matches-mobile-snapshot.png',
-    {
-      maxDiffPixelRatio: 0.02,
-    },
   )
 })

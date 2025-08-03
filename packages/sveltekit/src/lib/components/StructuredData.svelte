@@ -7,6 +7,8 @@
     ...schema,
     '@context': 'https://schema.org',
   })
+
+   $: schemaScript = `<script type=\"application/ld+json\">${modifiedSchema}<\/script>`
 </script>
 
-{@html "<script type=\"application/ld+json\">" + modifiedSchema + "</script>"}
+{@html schemaScript}

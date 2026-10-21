@@ -1,7 +1,7 @@
 import config from '../../playwright.config'
 
 config.webServer = {
-  command: 'npm run build && npm run start -- --port 4173',
+  command: 'pnpm build && pnpm start --port 4173',
   port: 4173,
   reuseExistingServer: !process.env.CI,
 }

@@ -26,6 +26,9 @@
     "eslint-plugin-vue": "^10.4.0"
   },
   "dependencies": {
+    "@epoxide/web-assets": "workspace:*",
+    "@epoxide/web-constants": "workspace:*",
+    "@epoxide/web-types": "workspace:*",
     "nuxt": "4.0.2",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"

@@ -69,31 +69,53 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Run tests
-        run: | 
-          pnpm test | tee output.log
-          if grep -q -e "Error: A snapshot doesn't exist at" -e "Screenshot comparison failed" -e "[0-9]\+ pixels (ratio [0-9]\+\.[0-9]\+ of all image pixels) are different." output.log; then
-            echo "Playwright tests failed due to a snapshot issue."
-            echo "SNAPSHOT_DIFFERENCES=true" >> $GITHUB_ENV
-            exit 1
-          elif grep -q "failed" output.log; then
-            echo "Playwright tests failed due to a non-snapshot issue."
-            exit 1
-          fi
-      - uses: actions/upload-artifact@v4
+        id: test
+        run: pnpm -r --workspace-concurrency=1 --no-bail --if-present test
+        continue-on-error: true
+      - name: Upload Playwright HTML report
+        uses: actions/upload-artifact@v4
         id: artifact-upload
         if: always()
         with:
           name: playwright-report
-          path: packages/next/playwright-report/
+          path: packages/*/playwright-report/
           retention-days: 30
-      - name: Comment on PR with report link
-        uses: thollander/actions-comment-pull-request@v3
-        if: ${{ failure() && env.SNAPSHOT_DIFFERENCES == 'true' }}
+          if-no-files-found: ignore
+      - name: Detect snapshot failures
+        id: snapshots
+        if: always() && github.event_name == 'pull_request'
+        run: node .github/scripts/detect-snapshot-failures.mjs packages/*/playwright-json/results.json >> "$GITHUB_OUTPUT"
+      - name: Update PR snapshot comment
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
         with:
-          message: |
-            ### Playwright visual snapshot differences were detected.
-            View the [Playwright report](${{ steps.artifact-upload.outputs.artifact-url }}) to review the visual differences.
-            **To approve the snapshot changes and update the snapshots, please comment:** /approve-snapshots
+          script: |
+            const marker = '<!-- playwright-snapshots -->'
+            const { owner, repo } = context.repo
+            const prNumber = context.payload.pull_request.number
+            const { data: comments } = await github.rest.issues.listComments({ owner, repo, issue_number: prNumber })
+            const existing = comments.find(c => c.user?.type === 'Bot' && c.body?.includes(marker))
+            if (existing) {
+              await github.rest.issues.deleteComment({ owner, repo, comment_id: existing.id })
+            }
+            if ('${{ steps.snapshots.outputs.failed }}' === 'true') {
+              const reportUrl = '${{ steps.artifact-upload.outputs.artifact-url }}' || `https://github.com/${owner}/${repo}/actions/runs/${context.runId}`
+              const updateUrl = `https://github.com/${owner}/${repo}/actions/workflows/update-snapshots.yml`
+              const body = [
+                marker,
+                '## 📸 Visual snapshot tests failed',
+                '',
+                'Screenshots no longer match the stored baselines. This could be an intentional UI change or a regression.',
+                '',
+                `**[View Playwright report](${reportUrl})**`,
+                '',
+                `To update the snapshots, run \`pnpm update-snapshots\` locally or comment \`/update-snapshots\` on this PR or [run the Update Snapshots workflow](${updateUrl}) with PR number \`${prNumber}\`.`,
+              ].join('\n')
+              await github.rest.issues.createComment({ owner, repo, issue_number: prNumber, body })
+            }
+      - name: Fail if tests failed
+        if: steps.test.outcome == 'failure'
+        run: exit 1
   check-deploy:
     name: Check if deploy is needed
     runs-on: ubuntu-latest

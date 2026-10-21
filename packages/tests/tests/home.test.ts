@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test'
 import { HOME, META } from '@epoxide/web-constants'
 import { VIEWPORT_SIZES } from '../viewportSizes'
+import { waitForImagesLoaded } from '../utils'
 
 test('has logo', async ({ page }) => {
   await page.goto('/')
@@ -24,34 +25,20 @@ test('has section with links', async ({ page }) => {
   await expect(page.locator('section').locator('a')).toBeTruthy()
 })
 
-test('matches desktop snapshot', async ({ page }) => {
-  await page.goto('/')
-  await page.setViewportSize(VIEWPORT_SIZES.DESKTOP)
-  await expect(page).toHaveScreenshot(
-    '../snapshots/home.test.ts.matches-desktop-snapshot.png',
+for (const [name, viewport] of Object.entries(VIEWPORT_SIZES)) {
+  test(
+    `home snapshot on ${name.toLowerCase()}`,
+    { tag: '@snapshot' },
+    async ({ page }) => {
+      await page.setViewportSize(viewport)
+      await page.goto('/')
+      await expect(page.locator('h1')).toBeVisible()
+      await page.evaluate(() => document.fonts.ready)
+      await waitForImagesLoaded(page)
+      await expect(page).toHaveScreenshot(
+        `home-snapshot-on-${name.toLowerCase()}.png`,
+        { fullPage: true },
+      )
+    },
   )
-})
-
-test('matches laptop snapshot', async ({ page }) => {
-  await page.goto('/')
-  await page.setViewportSize(VIEWPORT_SIZES.LAPTOP)
-  await expect(page).toHaveScreenshot(
-    '../snapshots/home.test.ts.matches-laptop-snapshot.png',
-  )
-})
-
-test('matches tablet snapshot', async ({ page }) => {
-  await page.goto('/')
-  await page.setViewportSize(VIEWPORT_SIZES.TABLET)
-  await expect(page).toHaveScreenshot(
-    '../snapshots/home.test.ts.matches-tablet-snapshot.png',
-  )
-})
-
-test('matches mobile snapshot', async ({ page }) => {
-  await page.goto('/')
-  await page.setViewportSize(VIEWPORT_SIZES.MOBILE)
-  await expect(page).toHaveScreenshot(
-    '../snapshots/home.test.ts.matches-mobile-snapshot.png',
-  )
-})
+}

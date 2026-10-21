@@ -1,4 +1,4 @@
-import type { PlaywrightTestConfig } from '@playwright/test'
+import { devices, type PlaywrightTestConfig } from '@playwright/test'
 
 const config: PlaywrightTestConfig = {
   webServer: {
@@ -7,11 +7,41 @@ const config: PlaywrightTestConfig = {
     reuseExistingServer: !process.env.CI,
   },
   testDir: '../tests/tests',
-  snapshotPathTemplate: '../tests/snapshots/{testFileName}.{testName}{ext}',
-  retries: 2,
+  snapshotPathTemplate: '../tests/snapshots/{testFileName}.{arg}{ext}',
   fullyParallel: true,
-  reporter: process.env.CI ? [['html', { open: 'never' }], ['list']] : 'list',
+  forbidOnly: Boolean(process.env.CI),
+  retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 2 : undefined,
+  reporter: process.env.CI
+    ? [
+        ['list'],
+        ['html', { open: 'never' }],
+        ['json', { outputFile: 'playwright-json/results.json' }],
+      ]
+    : 'list',
+  use: {
+    baseURL: 'http://localhost:4173',
+    trace: 'on-first-retry',
+  },
+  expect: {
+    toHaveScreenshot: {
+      maxDiffPixelRatio: process.env.CI ? 0 : 0.02,
+      caret: 'initial',
+    },
+  },
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+      grepInvert: /@snapshot/,
+    },
+    {
+      name: 'chromium-snapshots',
+      use: { ...devices['Desktop Chrome'] },
+      grep: /@snapshot/,
+      dependencies: ['chromium'],
+    },
+  ],
 }
 
 export default config

@@ -1,0 +1,123 @@
+name: Update Snapshots
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to update snapshots for (leave empty for default branch)'
+        required: false
+        type: string
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  update-snapshots:
+    name: Update visual snapshots
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request != null &&
+       contains(github.event.comment.body, '/update-snapshots'))
+    runs-on: ubuntu-latest
+    # Run inside the Playwright image: browsers + system deps are preinstalled, so no
+    # `playwright install` step is needed.
+    # IMPORTANT: keep the image tag in sync with the @playwright/test version in
+    # the root package.json — a mismatch means the bundled browsers don't match
+    # the test runner. Bump both together.
+    container:
+      image: mcr.microsoft.com/playwright:v1.54.2-noble
+      options: --user 1001
+    steps:
+      - name: Resolve branch and check permission
+        id: ctx
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo
+
+            if (context.eventName === 'issue_comment') {
+              const commenter = context.payload.comment.user.login
+              const { data: perm } = await github.rest.repos.getCollaboratorPermissionLevel({
+                owner, repo, username: commenter,
+              })
+              if (!['admin', 'write'].includes(perm.permission)) {
+                core.setFailed(`@${commenter} does not have write access`)
+                return
+              }
+              const prNumber = context.payload.issue.number
+              const { data: pr } = await github.rest.pulls.get({ owner, repo, pull_number: prNumber })
+              core.setOutput('ref', pr.head.ref)
+              core.setOutput('pr_number', prNumber.toString())
+            } else {
+              const prNumber = context.payload.inputs?.pr_number
+              if (prNumber) {
+                const { data: pr } = await github.rest.pulls.get({ owner, repo, pull_number: Number(prNumber) })
+                core.setOutput('ref', pr.head.ref)
+                core.setOutput('pr_number', prNumber)
+              } else {
+                core.setOutput('ref', context.payload.repository.default_branch)
+                core.setOutput('pr_number', '')
+              }
+            }
+      - name: React to comment
+        if: github.event_name == 'issue_comment'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: context.payload.comment.id,
+              content: 'rocket',
+            })
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.ctx.outputs.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12.14.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Update snapshots
+        run: pnpm --filter @epoxide/web-next exec playwright test --project chromium-snapshots --no-deps --update-snapshots
+      - name: Commit updated snapshots
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add 'packages/tests/snapshots/'
+          if git diff --staged --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit --no-verify -m "test: update visual snapshots"
+            git push --no-verify
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Comment result on PR
+        if: steps.ctx.outputs.pr_number != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo
+            const prNumber = Number('${{ steps.ctx.outputs.pr_number }}')
+            const changed = '${{ steps.commit.outputs.changed }}' === 'true'
+            const ciUrl = `https://github.com/${owner}/${repo}/actions/workflows/ci.yml`
+            const body = changed
+              ? `✅ Visual snapshots updated and committed to this branch.`
+              : `📷 No snapshot changes — all baselines are already up to date. [Re-run CI manually](${ciUrl}) if needed.`
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: prNumber,
+              body,
+            })

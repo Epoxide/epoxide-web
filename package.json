@@ -2,35 +2,35 @@
   "name": "@epoxide/web",
   "version": "1.0.0",
   "description": "epoxide.se web monorepo",
-  "workspaces": [
-    "packages/assets",
-    "packages/astro",
-    "packages/constants",
-    "packages/next",
-    "packages/nuxt",
-    "packages/solid-start",
-    "packages/sveltekit",
-    "packages/tests",
-    "packages/types"
-  ],
   "type": "module",
   "engines": {
-    "node": ">=22.12",
-    "npm": ">=10"
+    "node": "24.x.x"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^12.14.0",
+      "onFail": "download"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "^24.21.0",
+      "onFail": "download"
+    }
   },
   "scripts": {
-    "build": "npm run build -w @epoxide/web-next",
-    "check": "npm run check --workspaces --if-present",
-    "dev:astro": "npm run dev -w @epoxide/web-astro",
-    "dev:next": "npm run dev -w @epoxide/web-next",
-    "dev:nuxt": "npm run dev -w @epoxide/web-nuxt",
-    "dev:solid-start": "npm run dev -w @epoxide/web-solid-start",
-    "dev:sveltekit": "npm run dev -w @epoxide/web-sveltekit",
-    "lint": "npm run lint --workspaces --if-present",
+    "build": "pnpm --filter @epoxide/web-next build",
+    "check": "pnpm -r --if-present check",
+    "dev:astro": "pnpm --filter @epoxide/web-astro dev",
+    "dev:next": "pnpm --filter @epoxide/web-next dev",
+    "dev:nuxt": "pnpm --filter @epoxide/web-nuxt dev",
+    "dev:solid-start": "pnpm --filter @epoxide/web-solid-start dev",
+    "dev:sveltekit": "pnpm --filter @epoxide/web-sveltekit dev",
+    "lint": "pnpm -r --if-present lint",
     "prepare": "husky",
-    "start": "npm run start -w @epoxide/web-next",
-    "test": "npm run test --workspaces --if-present",
-    "update-snapshots": "npm run update-snapshots -w @epoxide/web-next"
+    "start": "pnpm --filter @epoxide/web-next start",
+    "test": "pnpm -r --workspace-concurrency=1 --if-present test",
+    "update-snapshots": "pnpm --filter @epoxide/web-next update-snapshots"
   },
   "author": {
     "name": "Tomas Tannergren",
@@ -45,7 +45,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "@playwright/test": "^1.54.2",
+    "@playwright/test": "1.54.2",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "eslint": "^8.57.1",

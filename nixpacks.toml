@@ -1,4 +1,6 @@
 [phases.setup]
+  nixPkgs = ['nodejs_24']
   nixpkgsArchive = '11cb3517b3af6af300dd6c055aeda73c9bf52c48'# https://github.com/NixOS/nixpkgs/tags
 [phases.install]
-  cmds = ['npm update npm -g', 'npm ci']
+  cmds = ['npm install -g --prefix /root/.pnpm pnpm@12.14.0', 'pnpm install --frozen-lockfile']
+  paths = ['/root/.pnpm/bin', '...']

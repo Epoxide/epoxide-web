@@ -30,5 +30,10 @@
     "prettier-plugin-svelte": "^3.4.0",
     "svelte": "^5.37.3",
     "svelte-check": "^4.3.1"
+  },
+  "dependencies": {
+    "@epoxide/web-assets": "workspace:*",
+    "@epoxide/web-constants": "workspace:*",
+    "@epoxide/web-types": "workspace:*"
   }
 }

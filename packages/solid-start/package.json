@@ -25,6 +25,9 @@
     "eslint-plugin-solid": "^0.14.5"
   },
   "dependencies": {
+    "@epoxide/web-assets": "workspace:*",
+    "@epoxide/web-constants": "workspace:*",
+    "@epoxide/web-types": "workspace:*",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.3",
     "@solidjs/start": "^1.1.7",

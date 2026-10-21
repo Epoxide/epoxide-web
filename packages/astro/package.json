@@ -30,6 +30,9 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/react": "^4.3.0",
+    "@epoxide/web-assets": "workspace:*",
+    "@epoxide/web-constants": "workspace:*",
+    "@epoxide/web-next": "workspace:*",
     "astro": "^5.12.8",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"

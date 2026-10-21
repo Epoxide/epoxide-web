@@ -1,0 +1,16 @@
+packages:
+  - packages/assets
+  - packages/astro
+  - packages/constants
+  - packages/next
+  - packages/nuxt
+  - packages/solid-start
+  - packages/sveltekit
+  - packages/tests
+  - packages/types
+allowBuilds:
+  '@parcel/watcher': false
+  esbuild: false
+  sharp: false
+  unrs-resolver: false
+engineStrict: true

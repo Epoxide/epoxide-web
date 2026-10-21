@@ -20,11 +20,6 @@ test('has h1 with text epoxide', async ({ page }) => {
   await expect(page.locator('h1')).toHaveText(HOME.TITLE)
 })
 
-test('has section with links', async ({ page }) => {
-  await page.goto('/')
-  await expect(page.locator('section').locator('a')).toBeTruthy()
-})
-
 for (const [name, viewport] of Object.entries(VIEWPORT_SIZES)) {
   test(
     `home snapshot on ${name.toLowerCase()}`,

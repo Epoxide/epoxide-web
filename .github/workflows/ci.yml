@@ -16,8 +16,6 @@ jobs:
         with:
           fetch-depth: 0
       - uses: pnpm/action-setup@v6
-        with:
-          version: 12.14.0
       - uses: actions/setup-node@v7
         with:
           node-version-file: 'package.json'
@@ -38,8 +36,6 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
-        with:
-          version: 12.14.0
       - uses: actions/setup-node@v7
         with:
           node-version-file: 'package.json'
@@ -60,8 +56,6 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
-        with:
-          version: 12.14.0
       - uses: actions/setup-node@v7
         with:
           node-version-file: 'package.json'

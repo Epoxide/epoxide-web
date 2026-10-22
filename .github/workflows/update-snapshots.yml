@@ -80,8 +80,6 @@ jobs:
           ref: ${{ steps.ctx.outputs.ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: pnpm/action-setup@v6
-        with:
-          version: 12.14.0
       - uses: actions/setup-node@v7
         with:
           node-version-file: 'package.json'

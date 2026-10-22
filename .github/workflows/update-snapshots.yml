@@ -35,7 +35,7 @@ jobs:
     steps:
       - name: Resolve branch and check permission
         id: ctx
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const { owner, repo } = context.repo
@@ -66,7 +66,7 @@ jobs:
             }
       - name: React to comment
         if: github.event_name == 'issue_comment'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             await github.rest.reactions.createForIssueComment({
@@ -75,14 +75,14 @@ jobs:
               comment_id: context.payload.comment.id,
               content: 'rocket',
             })
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ steps.ctx.outputs.ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           version: 12.14.0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: 'package.json'
           cache: 'pnpm'
@@ -105,7 +105,7 @@ jobs:
           fi
       - name: Comment result on PR
         if: steps.ctx.outputs.pr_number != ''
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const { owner, repo } = context.repo

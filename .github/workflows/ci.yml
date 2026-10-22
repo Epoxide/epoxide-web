@@ -12,13 +12,13 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           version: 12.14.0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: 'package.json'
           cache: 'pnpm'
@@ -36,11 +36,11 @@ jobs:
     name: Type check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
         with:
           version: 12.14.0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: 'package.json'
           cache: 'pnpm'
@@ -58,11 +58,11 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
         with:
           version: 12.14.0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: 'package.json'
           cache: 'pnpm'
@@ -73,7 +73,7 @@ jobs:
         run: pnpm -r --workspace-concurrency=1 --no-bail --if-present test
         continue-on-error: true
       - name: Upload Playwright HTML report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         id: artifact-upload
         if: always()
         with:
@@ -87,7 +87,7 @@ jobs:
         run: node .github/scripts/detect-snapshot-failures.mjs packages/*/playwright-json/results.json >> "$GITHUB_OUTPUT"
       - name: Update PR snapshot comment
         if: always() && github.event_name == 'pull_request'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const marker = '<!-- playwright-snapshots -->'
@@ -124,7 +124,7 @@ jobs:
       deployNext: ${{ steps.checkCommitMessagesForNextChanges.outputs.deployNext }}
     permissions: read-all
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Get last workflow run SHA
@@ -154,7 +154,7 @@ jobs:
       url: ${{steps.changes.outputs.url}}
     permissions: read-all
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Changes since last deploy
         id: changes
         run: |

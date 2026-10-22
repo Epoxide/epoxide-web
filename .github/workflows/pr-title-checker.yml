@@ -15,14 +15,14 @@ jobs:
       pull-requests: write
       contents: read
     steps:
-      - uses: thehanimo/pr-title-checker@v1.4.3
+      - uses: thehanimo/pr-title-checker@v2.0.0
         id: check
         continue-on-error: true
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           pass_on_octokit_error: false
       - name: Add comment to fix PR title
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@v3.0.5
         if: ${{ steps.check.outputs.success == 'false' }}
         with:
           header: 'PR Title Check'
@@ -34,7 +34,7 @@ jobs:
               Please update the title to match the format `type(<optional scope>): description`.
       - name: Add comment that PR title is fixed
         if: ${{ steps.check.outputs.success == 'true' }}
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@v3.0.5
         with:
           header: 'PR Title Check'
           recreate: true

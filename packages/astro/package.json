@@ -25,15 +25,15 @@
   },
   "devDependencies": {
     "eslint-plugin-astro": "^1.7.0",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^1.1.2"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.11",
-    "@astrojs/react": "^4.4.2",
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/react": "^7.1.1",
     "@epoxide/web-assets": "workspace:*",
     "@epoxide/web-constants": "workspace:*",
     "@epoxide/web-next": "workspace:*",
-    "astro": "^5.18.2",
+    "astro": "^7.4.2",
     "react": "catalog:react",
     "react-dom": "catalog:react"
   }

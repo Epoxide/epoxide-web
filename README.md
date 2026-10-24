@@ -37,7 +37,7 @@ This is a monorepo for the web located at [epoxide.se](https://epoxide.se). It i
         </picture>
         <span>Astro</span>
       </td>
-      <td>5</td>
+      <td>7</td>
       <td>
         <picture>
           <source

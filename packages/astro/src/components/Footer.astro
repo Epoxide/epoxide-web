@@ -15,20 +15,18 @@ const { src } = Astro.props
     <span>{FOOTER.TITLE}</span>
   </div>
   <section class="social-media-links">
-    {
-      FOOTER.SOCIAL_MEDIA_LINKS.map((link) => {
-        return (
-          <IconButton
-            href={link.URL}
-            target="_blank"
-            icon={link.ICON}
-            iconLibrary="brands"
-            size="xl"
-            ariaLabel={link.ARIA_LABEL}
-          />
-        )
-      })
-    }
+    {FOOTER.SOCIAL_MEDIA_LINKS.map((link) => {
+      return (
+        <IconButton
+          href={link.URL}
+          target="_blank"
+          icon={link.ICON}
+          iconLibrary="brands"
+          size="xl"
+          ariaLabel={link.ARIA_LABEL}
+        />
+      )
+    })}
   </section>
 </footer>
 

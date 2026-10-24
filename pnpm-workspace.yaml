@@ -9,6 +9,9 @@ packages:
   - packages/tests
   - packages/types
 catalogs:
+  commitlint:
+    '@commitlint/cli': ^21.2.4
+    '@commitlint/config-conventional': ^21.2.4
   next:
     next: ^16.4.3
     eslint-config-next: ^16.4.3

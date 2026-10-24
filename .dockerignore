@@ -1,0 +1,16 @@
+**/node_modules
+**/.next
+**/.nuxt
+**/.output
+**/.svelte-kit
+**/dist
+**/playwright-report
+**/playwright-json
+**/test-results
+.git
+.github
+.husky
+.vscode
+.DS_Store
+Dockerfile
+.dockerignore

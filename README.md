@@ -37,7 +37,7 @@ This is a monorepo for the web located at [epoxide.se](https://epoxide.se). It i
         </picture>
         <span>Astro</span>
       </td>
-      <td>4</td>
+      <td>5</td>
       <td>
         <picture>
           <source
@@ -82,7 +82,7 @@ This is a monorepo for the web located at [epoxide.se](https://epoxide.se). It i
         </picture>
         <span>Next</span>
       </td>
-      <td>15</td>
+      <td>16</td>
       <td>
         <img src="https://github.com/Epoxide/epoxide-web/blob/main/packages/assets/images/docs/react.svg?raw=true" alt="React" height="20px" />
         <span>React</span>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { resolve } from '$app/paths'
   import { page } from '$app/stores'
   import { NOT_FOUND } from '@epoxide/web-constants'
 </script>
@@ -6,7 +7,7 @@
 {#if $page.status === 404}
   <h1 class="title">{NOT_FOUND.TITLE}</h1>
   <section class="links">
-    <a href="/">{NOT_FOUND.GO_BACK}</a>
+    <a href={resolve('/')}>{NOT_FOUND.GO_BACK}</a>
   </section>
 {/if}
 

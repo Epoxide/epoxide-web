@@ -22,16 +22,16 @@
     "test": "playwright test"
   },
   "devDependencies": {
-    "eslint-plugin-solid": "^0.14.5"
+    "eslint-plugin-solid": "^0.18.1"
   },
   "dependencies": {
     "@epoxide/web-assets": "workspace:*",
     "@epoxide/web-constants": "workspace:*",
     "@epoxide/web-types": "workspace:*",
     "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^0.15.3",
-    "@solidjs/start": "^1.1.7",
-    "solid-js": "^1.9.7",
-    "vinxi": "^0.5.8"
+    "@solidjs/router": "^0.15.4",
+    "@solidjs/start": "^1.4.0",
+    "solid-js": "^1.9.17",
+    "vinxi": "^0.5.11"
   }
 }

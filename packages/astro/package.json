@@ -24,17 +24,17 @@
     "test": "playwright test"
   },
   "devDependencies": {
-    "eslint-plugin-astro": "^1.3.1",
+    "eslint-plugin-astro": "^1.7.0",
     "prettier-plugin-astro": "^0.14.1"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/react": "^4.3.0",
+    "@astrojs/check": "^0.9.11",
+    "@astrojs/react": "^4.4.2",
     "@epoxide/web-assets": "workspace:*",
     "@epoxide/web-constants": "workspace:*",
     "@epoxide/web-next": "workspace:*",
-    "astro": "^5.12.8",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "astro": "^5.18.2",
+    "react": "catalog:react",
+    "react-dom": "catalog:react"
   }
 }

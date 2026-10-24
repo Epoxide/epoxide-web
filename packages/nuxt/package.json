@@ -1,7 +1,7 @@
 {
   "name": "@epoxide/web-nuxt",
   "version": "1.0.0",
-  "description": "epoxide.se web using Nuxt 3",
+  "description": "epoxide.se web using Nuxt 4",
   "type": "module",
   "scripts": {
     "build": "nuxt build",
@@ -23,14 +23,14 @@
   },
   "license": "GPL-3.0-or-later",
   "devDependencies": {
-    "eslint-plugin-vue": "^10.4.0"
+    "eslint-plugin-vue": "^10.11.1"
   },
   "dependencies": {
     "@epoxide/web-assets": "workspace:*",
     "@epoxide/web-constants": "workspace:*",
     "@epoxide/web-types": "workspace:*",
     "nuxt": "4.0.2",
-    "vue": "^3.5.18",
-    "vue-router": "^4.5.1"
+    "vue": "^3.5.44",
+    "vue-router": "^4.6.4"
   }
 }

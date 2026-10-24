@@ -23,14 +23,15 @@
   },
   "license": "GPL-3.0-or-later",
   "devDependencies": {
-    "eslint-plugin-vue": "^10.11.1"
+    "eslint-plugin-vue": "^10.11.1",
+    "vite": "^8.3.5"
   },
   "dependencies": {
     "@epoxide/web-assets": "workspace:*",
     "@epoxide/web-constants": "workspace:*",
     "@epoxide/web-types": "workspace:*",
-    "nuxt": "4.0.2",
+    "nuxt": "4.6.2",
     "vue": "^3.5.44",
-    "vue-router": "^4.6.4"
+    "vue-router": "^5.4.0"
   }
 }

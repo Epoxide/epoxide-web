@@ -2,7 +2,7 @@ FROM node:24-slim
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN npm install -g pnpm@12.14.0
+RUN npm install -g pnpm@12.15.0
 
 WORKDIR /app
 

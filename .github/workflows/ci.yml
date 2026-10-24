@@ -48,7 +48,7 @@ jobs:
     name: Playwright test
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.54.2-noble # Match the version in package.json
+      image: mcr.microsoft.com/playwright:v1.64.1-noble # Match the version in package.json
       options: --user 1001
     permissions:
       contents: read

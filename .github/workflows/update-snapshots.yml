@@ -30,7 +30,7 @@ jobs:
     # the root package.json — a mismatch means the bundled browsers don't match
     # the test runner. Bump both together.
     container:
-      image: mcr.microsoft.com/playwright:v1.54.2-noble
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
       options: --user 1001
     steps:
       - name: Resolve branch and check permission

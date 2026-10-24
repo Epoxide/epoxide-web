@@ -8,3 +8,4 @@ test-results
 .nx
 .DS_Store
 playwright-json
+*.tsbuildinfo

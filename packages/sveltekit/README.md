@@ -1,3 +1,3 @@
-# epoxide-web using SvelteKit
+# epoxide-web using SvelteKit 3
 
-This workspace is built using SvelteKit.
+This workspace is built using SvelteKit 3.

@@ -1,7 +1,7 @@
 {
   "name": "@epoxide/web-astro",
   "version": "1.0.0",
-  "description": "epoxide.se web using Astro",
+  "description": "epoxide.se web using Astro 7",
   "type": "module",
   "author": {
     "name": "Tomas Tannergren",

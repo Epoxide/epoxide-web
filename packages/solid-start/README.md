@@ -1,3 +1,3 @@
-# epoxide-web using SolidStart
+# epoxide-web using SolidStart 2
 
-This workspace is built using SolidStart.
+This workspace is built using SolidStart 2.

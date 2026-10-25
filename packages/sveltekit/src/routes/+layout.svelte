@@ -1,8 +1,8 @@
 <script lang="ts">
   import '../app.css'
   import { META } from '@epoxide/web-constants'
-  import Footer from '$lib/components/Footer.svelte'
-  import StructuredData from '$lib/components/StructuredData.svelte'
+  import Footer from '#lib/components/Footer.svelte'
+  import StructuredData from '#lib/components/StructuredData.svelte'
 </script>
 
 <svelte:head>

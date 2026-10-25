@@ -1,10 +1,10 @@
 <script lang="ts">
   import { resolve } from '$app/paths'
-  import { page } from '$app/stores'
+  import { page } from '$app/state'
   import { NOT_FOUND } from '@epoxide/web-constants'
 </script>
 
-{#if $page.status === 404}
+{#if page.status === 404}
   <h1 class="title">{NOT_FOUND.TITLE}</h1>
   <section class="links">
     <a href={resolve('/')}>{NOT_FOUND.GO_BACK}</a>

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { HOME } from '@epoxide/web-constants'
-  import TitleLogo from '$lib/components/TitleLogo.svelte'
+  import TitleLogo from '#lib/components/TitleLogo.svelte'
 </script>
 
 <TitleLogo

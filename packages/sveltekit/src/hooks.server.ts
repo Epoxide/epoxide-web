@@ -1,13 +1,14 @@
-import type { HandleServerError } from '@sveltejs/kit'
+import type { HandleServerError } from '@sveltejs/kit/hooks'
 
-/** Handles unexpected errors. This function is not called for expected errors (those thrown with the error function imported from `@sveltejs/kit`). */
-export const handleError: HandleServerError = ({ error, status, message }) => {
+/** Handles all errors except redirects. `status` and `message` default to the caught error's values. */
+export const handleError: HandleServerError = ({ kind, error }) => {
+  const status = kind === 'unknown' ? 500 : error.status
+
   if (status !== 404) {
     console.error(error)
   }
 
   return {
-    message,
     code: status.toString(),
   }
 }

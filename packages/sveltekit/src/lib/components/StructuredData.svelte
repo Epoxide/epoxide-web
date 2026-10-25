@@ -1,14 +1,27 @@
 <script lang="ts">
   import type { WebSite } from 'schema-dts'
 
-  export let schema: WebSite
+  interface Props {
+    schema: WebSite
+  }
 
-  $: modifiedSchema = JSON.stringify({
-    ...schema,
-    '@context': 'https://schema.org',
-  })
+  let { schema }: Props = $props()
 
-   $: schemaScript = `<script type=\"application/ld+json\">${modifiedSchema}<\/script>`
+  // Svelte doesn't allow a literal <script> tag in markup
+  const tag = 'script'
+
+  // Unicode-escape the characters Svelte would otherwise HTML-escape, which a <script> doesn't decode
+  const schemaJson = $derived(
+    JSON.stringify({
+      ...schema,
+      '@context': 'https://schema.org',
+    }).replace(
+      /[<>&]/g,
+      (char) => `\\u${char.charCodeAt(0).toString(16).padStart(4, '0')}`,
+    ),
+  )
 </script>
 
-{@html schemaScript}
+<svelte:element this={tag} type="application/ld+json">
+  {schemaJson}
+</svelte:element>

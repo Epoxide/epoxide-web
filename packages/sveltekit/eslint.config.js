@@ -20,10 +20,6 @@ export default [
     },
   },
   {
-    ignores: [
-      '.svelte-kit/',
-      'build/',
-      '**/StructuredData.svelte', // Crashes when parsing {@html} in Svelte
-    ],
+    ignores: ['.svelte-kit/', 'build/'],
   },
 ]

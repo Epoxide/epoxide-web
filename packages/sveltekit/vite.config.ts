@@ -10,6 +10,11 @@ const config: UserConfig = {
       // for more information about preprocessors
       preprocess: vitePreprocess(),
       adapter: adapter(),
+      compilerOptions: {
+        // Force runes mode for our own components, but leave libraries to decide for themselves
+        runes: ({ filename }) =>
+          filename.split(/[/\\]/).includes('node_modules') ? undefined : true,
+      },
     }),
   ],
   server: {

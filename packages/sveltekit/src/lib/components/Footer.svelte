@@ -2,7 +2,11 @@
   import { FOOTER } from '@epoxide/web-constants'
   import IconButton from './IconButton.svelte'
 
-  export let src: string
+  interface Props {
+    src: string
+  }
+
+  let { src }: Props = $props()
 </script>
 
 <footer class="footer">

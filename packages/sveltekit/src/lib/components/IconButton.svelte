@@ -5,17 +5,22 @@
   } from 'svelte/elements'
   import Icon from './Icon.svelte'
 
-  export let href: HTMLAnchorAttributes['href'] | undefined = undefined
-  export let target: HTMLAnchorAttributes['target'] | undefined = undefined
-  export let type: HTMLButtonAttributes['type'] | undefined = undefined
-  export let icon: string
-  export let iconLibrary: 'brands' | 'solid'
-  export let size: '2xs' | 'xs' | 'sm' | 'lg' | 'xl' | '2xl' | undefined =
-    undefined
-  export let ariaLabel: string | undefined = undefined
+  interface Props {
+    href?: HTMLAnchorAttributes['href']
+    target?: HTMLAnchorAttributes['target']
+    type?: HTMLButtonAttributes['type']
+    icon: string
+    iconLibrary: 'brands' | 'solid'
+    size?: '2xs' | 'xs' | 'sm' | 'lg' | 'xl' | '2xl'
+    ariaLabel?: string
+  }
+
+  let { href, target, type, icon, iconLibrary, size, ariaLabel }: Props =
+    $props()
 </script>
 
 {#if href}
+  <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- Only used for external links -->
   <a {href} {target} aria-label={ariaLabel} class="button">
     <Icon {icon} {iconLibrary} {size} />
   </a>

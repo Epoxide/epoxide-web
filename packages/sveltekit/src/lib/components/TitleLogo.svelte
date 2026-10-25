@@ -1,8 +1,12 @@
 <script lang="ts">
-  export let src: string
-  export let alt: string
-  export let logoSize: number
-  export let title: string
+  interface Props {
+    src: string
+    alt: string
+    logoSize: number
+    title: string
+  }
+
+  let { src, alt, logoSize, title }: Props = $props()
 </script>
 
 <div class="container">

@@ -7,8 +7,4 @@ export const handleError: HandleServerError = ({ kind, error }) => {
   if (status !== 404) {
     console.error(error)
   }
-
-  return {
-    code: status.toString(),
-  }
 }

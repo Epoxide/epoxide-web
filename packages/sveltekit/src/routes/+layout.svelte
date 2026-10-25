@@ -1,8 +1,16 @@
 <script lang="ts">
   import '../app.css'
+  import type { Snippet } from 'svelte'
   import { META } from '@epoxide/web-constants'
+  import epoxideLogo from '@epoxide/web-assets/images/epoxide-logo-circle.svg'
   import Footer from '#lib/components/Footer.svelte'
   import StructuredData from '#lib/components/StructuredData.svelte'
+
+  interface Props {
+    children: Snippet
+  }
+
+  let { children }: Props = $props()
 </script>
 
 <svelte:head>
@@ -38,9 +46,9 @@
   }}
 />
 <main>
-  <slot />
+  {@render children()}
 </main>
-<Footer src="/images/epoxide-logo-circle.svg" />
+<Footer src={epoxideLogo} />
 
 <style lang="scss">
   main {

@@ -12,6 +12,18 @@ catalogs:
   commitlint:
     '@commitlint/cli': ^21.2.4
     '@commitlint/config-conventional': ^21.2.4
+  eslint:
+    '@eslint/js': ^10.0.1
+    eslint: ^10.13.0
+    eslint-config-prettier: ^10.1.8
+    eslint-plugin-astro: ^3.2.1
+    eslint-plugin-prettier: ^5.5.7
+    eslint-plugin-promise: ^7.3.0
+    eslint-plugin-solid: ^0.18.1
+    eslint-plugin-svelte: ^3.23.1
+    eslint-plugin-vue: ^10.11.1
+    globals: ^17.13.0
+    typescript-eslint: ^8.72.0
   next:
     next: ^16.4.3
     eslint-config-next: ^16.4.3

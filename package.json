@@ -45,20 +45,20 @@
   "devDependencies": {
     "@commitlint/cli": "catalog:commitlint",
     "@commitlint/config-conventional": "catalog:commitlint",
-    "@eslint/js": "^9.39.5",
+    "@eslint/js": "catalog:eslint",
     "@playwright/test": "^1.64.1",
-    "eslint": "^9.39.5",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.7",
-    "eslint-plugin-promise": "^7.3.0",
-    "globals": "^17.13.0",
+    "eslint": "catalog:eslint",
+    "eslint-config-prettier": "catalog:eslint",
+    "eslint-plugin-prettier": "catalog:eslint",
+    "eslint-plugin-promise": "catalog:eslint",
+    "globals": "catalog:eslint",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
     "prettier": "^3.9.10",
     "sass": "^1.106.1",
     "tslib": "^2.8.1",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.72.0"
+    "typescript-eslint": "catalog:eslint"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.3.1"

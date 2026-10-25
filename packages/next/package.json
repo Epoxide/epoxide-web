@@ -9,7 +9,8 @@
     "lint": "eslint . --rule 'no-console: error' --rule 'prettier/prettier: error'",
     "test": "playwright test",
     "test:no-snapshots": "playwright test --grep-invert @snapshot",
-    "update-snapshots": "node scripts/update-snapshots.mjs"
+    "update-snapshots": "node scripts/update-snapshots.mjs",
+    "check": "next typegen && tsc --noEmit"
   },
   "author": {
     "name": "Tomas Tannergren",

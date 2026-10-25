@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Constants for epoxide.se",
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check": "tsc --noEmit"
   },
   "author": {
     "name": "Tomas Tannergren",

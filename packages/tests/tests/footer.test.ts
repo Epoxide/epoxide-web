@@ -29,13 +29,13 @@ test('social media buttons links correctly', async ({ context, page }) => {
     .locator('a')
     .all()
 
-  for (let index = 0; index < socialMediaLinks.length; index++) {
+  for (const [index, socialMediaLink] of socialMediaLinks.entries()) {
     const [newPage] = await Promise.all([
       context.waitForEvent('page'),
-      socialMediaLinks[index].click(),
+      socialMediaLink.click(),
     ])
 
-    await expect(newPage.url()).toBe(FOOTER.SOCIAL_MEDIA_LINKS[index].URL)
+    await expect(newPage.url()).toBe(FOOTER.SOCIAL_MEDIA_LINKS[index]?.URL)
   }
 })
 
@@ -48,9 +48,9 @@ test('social media button links have correct aria-label', async ({ page }) => {
     .locator('a')
     .all()
 
-  for (let index = 0; index < socialMediaLinks.length; index++) {
-    await expect(await socialMediaLinks[index].getAttribute('aria-label')).toBe(
-      FOOTER.SOCIAL_MEDIA_LINKS[index].ARIA_LABEL,
+  for (const [index, socialMediaLink] of socialMediaLinks.entries()) {
+    await expect(await socialMediaLink.getAttribute('aria-label')).toBe(
+      FOOTER.SOCIAL_MEDIA_LINKS[index]?.ARIA_LABEL,
     )
   }
 })

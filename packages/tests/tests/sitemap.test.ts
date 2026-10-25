@@ -9,5 +9,5 @@ test('has sitemap with root', async ({ page }) => {
     })),
   )
 
-  await expect(urls[0].loc).toBe('https://epoxide.se')
+  await expect(urls[0]?.loc).toBe('https://epoxide.se')
 })

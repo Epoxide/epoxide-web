@@ -10,7 +10,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test": "playwright test"
+    "test": "playwright test",
+    "check": "nuxt typecheck"
   },
   "author": {
     "name": "Tomas Tannergren",
@@ -24,7 +25,8 @@
   "license": "GPL-3.0-or-later",
   "devDependencies": {
     "eslint-plugin-vue": "catalog:eslint",
-    "vite": "^8.3.5"
+    "vite": "^8.3.5",
+    "vue-tsc": "^3.3.13"
   },
   "dependencies": {
     "@epoxide/web-assets": "workspace:*",

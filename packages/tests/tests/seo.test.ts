@@ -44,7 +44,7 @@ test('has structured data with web site information', async ({ page }) => {
   await page.goto('/')
   await expect(
     JSON.parse(
-      await page.locator('script[type="application/ld+json"]').innerText(),
+      await page.locator('body script[type="application/ld+json"]').innerText(),
     ),
   ).toStrictEqual({
     '@context': 'https://schema.org',

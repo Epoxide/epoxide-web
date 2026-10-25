@@ -8,6 +8,6 @@ export default [
     ...solid,
   },
   {
-    ignores: ['.solid/', '.vinxi/', '.output/'],
+    ignores: ['.output/'],
   },
 ]

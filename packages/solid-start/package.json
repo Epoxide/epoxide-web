@@ -14,24 +14,25 @@
   },
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "dev": "vinxi dev",
-    "build": "vinxi build",
-    "start": "vinxi start",
-    "version": "vinxi version",
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node .output/server/index.mjs",
     "lint": "eslint . --rule 'no-console: error' --rule 'prettier/prettier: error'",
     "test": "playwright test"
   },
   "devDependencies": {
-    "eslint-plugin-solid": "^0.18.1"
+    "eslint-plugin-solid": "^0.18.1",
+    "vite": "^8.3.5"
   },
   "dependencies": {
     "@epoxide/web-assets": "workspace:*",
     "@epoxide/web-constants": "workspace:*",
     "@epoxide/web-types": "workspace:*",
     "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^0.15.4",
-    "@solidjs/start": "^1.4.0",
-    "solid-js": "^1.9.17",
-    "vinxi": "^0.5.11"
+    "@solidjs/router": "^1.0.0",
+    "@solidjs/start": "^2.1.0",
+    "nitro": "3.0.260903-beta",
+    "solid-js": "^1.9.17"
   }
 }

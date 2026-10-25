@@ -13,7 +13,8 @@ export const metadata: Metadata = {
   title: META.TITLE,
   description: META.DESCRIPTION,
   metadataBase: new URL(META.URL),
-  icons: '/favicon.ico',
+  icons: { icon: '/favicon.ico', apple: META.APPLE_TOUCH_ICON },
+  manifest: META.MANIFEST,
   openGraph: {
     title: META.TITLE,
     description: META.DESCRIPTION,
@@ -21,24 +22,27 @@ export const metadata: Metadata = {
     url: META.URL,
     locale: META.LOCALE,
     type: META.TYPE,
-    images: META.OG_IMAGE,
+    images: {
+      url: META.OG_IMAGE,
+      width: META.OG_IMAGE_WIDTH,
+      height: META.OG_IMAGE_HEIGHT,
+      alt: META.OG_IMAGE_ALT,
+    },
   },
   twitter: {
     card: META.TWITTER_CARD,
     title: META.TITLE,
     description: META.DESCRIPTION,
-    images: [META.TWITTER_IMAGE],
+    images: { url: META.TWITTER_IMAGE, alt: META.TWITTER_IMAGE_ALT },
     creator: META.TWITTER_CREATOR,
     creatorId: META.TWITTER_CREATOR_ID,
   },
   robots: {
     index: true,
     follow: true,
-    nocache: true,
     googleBot: {
       index: true,
       follow: true,
-      nocache: true,
     },
   },
   verification: {

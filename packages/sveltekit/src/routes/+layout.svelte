@@ -15,14 +15,18 @@
   <meta property="og:locale" content={META.LOCALE} />
   <meta property="og:type" content={META.TYPE} />
   <meta property="og:image" content={`${META.URL}${META.OG_IMAGE}`} />
+  <meta property="og:image:width" content={String(META.OG_IMAGE_WIDTH)} />
+  <meta property="og:image:height" content={String(META.OG_IMAGE_HEIGHT)} />
+  <meta property="og:image:alt" content={META.OG_IMAGE_ALT} />
   <meta name="twitter:card" content={META.TWITTER_CARD} />
   <meta name="twitter:title" content={META.TITLE} />
   <meta name="twitter:description" content={META.DESCRIPTION} />
   <meta name="twitter:image" content={`${META.URL}${META.TWITTER_IMAGE}`} />
+  <meta name="twitter:image:alt" content={META.TWITTER_IMAGE_ALT} />
   <meta name="twitter:creator" content={META.TWITTER_CREATOR} />
   <meta name="twitter:creator:id" content={META.TWITTER_CREATOR_ID} />
-  <meta name="robots" content="index, follow, nocache" />
-  <meta name="googlebot" content="index, follow, nocache" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
   <meta name="color-scheme" content={META.COLOR_SCHEME} />
   <meta name="theme-color" content={META.THEME_COLOR} />
 </svelte:head>

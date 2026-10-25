@@ -6,8 +6,10 @@ test('has sitemap with root', async ({ page }) => {
   const urls = await page.$$eval('url', (urls) =>
     urls.map((url) => ({
       loc: url.querySelector('loc')?.textContent,
+      lastmod: url.querySelector('lastmod')?.textContent,
     })),
   )
 
   await expect(urls[0]?.loc).toBe('https://epoxide.se')
+  await expect(urls[0]?.lastmod).toMatch(/^\d{4}-\d{2}-\d{2}$/)
 })

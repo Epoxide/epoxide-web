@@ -1,17 +1,17 @@
 import { expect, test } from '@playwright/test'
 
-test('has meta robots with index, follow, and nocache', async ({ page }) => {
+test('has meta robots with index and follow', async ({ page }) => {
   await page.goto('/')
   await expect(
     await page.locator('meta[name="robots"]').getAttribute('content'),
-  ).toBe('index, follow, nocache')
+  ).toBe('index, follow')
 })
 
-test('has meta googlebot with index, follow, and nocache', async ({ page }) => {
+test('has meta googlebot with index and follow', async ({ page }) => {
   await page.goto('/')
   await expect(
     await page.locator('meta[name="googlebot"]').getAttribute('content'),
-  ).toBe('index, follow, nocache')
+  ).toBe('index, follow')
 })
 
 test('has robots.txt with all agents', async ({ page }) => {

@@ -8,6 +8,31 @@ test('has favicon', async ({ page }) => {
   ).toContain('/favicon.ico')
 })
 
+test('has apple touch icon', async ({ page }) => {
+  await page.goto('/')
+  const appleTouchIcon = await page
+    .locator('link[rel="apple-touch-icon"]')
+    .getAttribute('href')
+  await expect(appleTouchIcon).toContain(META.APPLE_TOUCH_ICON)
+  const response = await page.request.get(appleTouchIcon as string)
+  await expect(response.ok()).toBe(true)
+})
+
+test('has web manifest with loadable icons', async ({ page }) => {
+  await page.goto('/')
+  const manifestHref = await page
+    .locator('link[rel="manifest"]')
+    .getAttribute('href')
+  await expect(manifestHref).toContain(META.MANIFEST)
+  const manifest = await (await page.request.get(manifestHref as string)).json()
+  await expect(manifest.name).toBe(META.TITLE)
+  await expect(manifest.icons.length).toBeGreaterThan(0)
+  for (const icon of manifest.icons) {
+    const response = await page.request.get(icon.src)
+    await expect(response.ok()).toBe(true)
+  }
+})
+
 test('has description', async ({ page }) => {
   await page.goto('/')
   await expect(
@@ -76,6 +101,27 @@ test('has opengraph image', async ({ page }) => {
   await expect(page.url()).toBe(ogImage)
 })
 
+test('has opengraph image dimensions', async ({ page }) => {
+  await page.goto('/')
+  await expect(
+    await page
+      .locator('meta[property="og:image:width"]')
+      .getAttribute('content'),
+  ).toBe(String(META.OG_IMAGE_WIDTH))
+  await expect(
+    await page
+      .locator('meta[property="og:image:height"]')
+      .getAttribute('content'),
+  ).toBe(String(META.OG_IMAGE_HEIGHT))
+})
+
+test('has opengraph image alt', async ({ page }) => {
+  await page.goto('/')
+  await expect(
+    await page.locator('meta[property="og:image:alt"]').getAttribute('content'),
+  ).toBe(META.OG_IMAGE_ALT)
+})
+
 test('has opengraph type', async ({ page }) => {
   await page.goto('/')
   await expect(
@@ -130,6 +176,15 @@ test('has twitter image', async ({ page }) => {
   await expect(twitterImage).toBe(`${META.URL}${META.TWITTER_IMAGE}`)
   await expect(page.goto(twitterImage as string)).resolves.toBeTruthy()
   await expect(page.url()).toBe(twitterImage)
+})
+
+test('has twitter image alt', async ({ page }) => {
+  await page.goto('/')
+  await expect(
+    await page
+      .locator('meta[name="twitter:image:alt"]')
+      .getAttribute('content'),
+  ).toBe(META.TWITTER_IMAGE_ALT)
 })
 
 test('has lang set to en', async ({ page }) => {

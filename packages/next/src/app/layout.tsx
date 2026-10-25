@@ -55,11 +55,7 @@ export const viewport: Viewport = {
   themeColor: META.THEME_COLOR,
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en">
       <body className={raleway.className}>

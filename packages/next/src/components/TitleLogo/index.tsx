@@ -18,7 +18,8 @@ export function TitleLogo({ src, alt, logoSize, title }: TitleLogoProps) {
           alt={alt}
           width={logoSize}
           height={logoSize}
-          priority
+          loading="eager"
+          fetchPriority="high"
         />
         <h1 className={styles.title}>{title}</h1>
       </div>

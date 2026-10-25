@@ -1,12 +1,13 @@
 ---
 import { HOME } from '@epoxide/web-constants'
+import epoxideLogo from '@epoxide/web-assets/images/epoxide-logo-circle.svg'
 import Layout from '../layouts/Layout.astro'
 import TitleLogo from '../components/TitleLogo.astro'
 ---
 
 <Layout>
   <TitleLogo
-    src="/images/epoxide-logo-circle.svg"
+    src={epoxideLogo.src}
     alt={HOME.LOGO.ALT}
     logoSize={HOME.LOGO.SIZE}
     title={HOME.TITLE}

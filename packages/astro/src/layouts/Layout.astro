@@ -1,6 +1,8 @@
 ---
 import '../styles/app.css'
+import { Font } from 'astro:assets'
 import { META } from '@epoxide/web-constants'
+import epoxideLogo from '@epoxide/web-assets/images/epoxide-logo-circle.svg'
 import Footer from '../components/Footer.astro'
 import { StructuredData } from '@epoxide/web-next/src/components/StructuredData'
 ---
@@ -9,6 +11,7 @@ import { StructuredData } from '@epoxide/web-next/src/components/StructuredData'
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <Font cssVariable="--font-raleway" preload />
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href={META.APPLE_TOUCH_ICON} />
     <link rel="manifest" href={META.MANIFEST} />
@@ -43,7 +46,7 @@ import { StructuredData } from '@epoxide/web-next/src/components/StructuredData'
     <main>
       <slot />
     </main>
-    <Footer src="/images/epoxide-logo-circle.svg" />
+    <Footer src={epoxideLogo.src} />
   </body>
 </html>
 

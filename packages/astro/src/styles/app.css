@@ -1,6 +1,5 @@
 @import url('@epoxide/web-assets/css/app.css');
-@import url('@epoxide/web-assets/css/raleway.css');
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: var(--font-raleway);
 }

@@ -1,9 +1,10 @@
-import { MetaProvider, Title } from '@solidjs/meta'
+import { Meta, MetaProvider, Title } from '@solidjs/meta'
 import { Router } from '@solidjs/router'
 import { FileRoutes } from '@solidjs/start/router'
 import { Suspense } from 'solid-js'
 import './app.css'
 import { META } from '@epoxide/web-constants'
+import epoxideLogo from '@epoxide/web-assets/images/epoxide-logo-circle.svg'
 import Footer from '~/components/Footer'
 import StructuredData from './components/StructuredData'
 
@@ -14,37 +15,37 @@ export default function App() {
         <>
           <MetaProvider>
             <Title>{META.TITLE}</Title>
-            <meta name="description" content={META.DESCRIPTION} />
-            <meta property="og:title" content={META.TITLE} />
-            <meta property="og:description" content={META.DESCRIPTION} />
-            <meta property="og:site_name" content={META.SITE_NAME} />
-            <meta property="og:url" content={META.URL} />
-            <meta property="og:locale" content={META.LOCALE} />
-            <meta property="og:type" content={META.TYPE} />
-            <meta property="og:image" content={`${META.URL}${META.OG_IMAGE}`} />
-            <meta
+            <Meta name="description" content={META.DESCRIPTION} />
+            <Meta property="og:title" content={META.TITLE} />
+            <Meta property="og:description" content={META.DESCRIPTION} />
+            <Meta property="og:site_name" content={META.SITE_NAME} />
+            <Meta property="og:url" content={META.URL} />
+            <Meta property="og:locale" content={META.LOCALE} />
+            <Meta property="og:type" content={META.TYPE} />
+            <Meta property="og:image" content={`${META.URL}${META.OG_IMAGE}`} />
+            <Meta
               property="og:image:width"
               content={String(META.OG_IMAGE_WIDTH)}
             />
-            <meta
+            <Meta
               property="og:image:height"
               content={String(META.OG_IMAGE_HEIGHT)}
             />
-            <meta property="og:image:alt" content={META.OG_IMAGE_ALT} />
-            <meta name="twitter:card" content={META.TWITTER_CARD} />
-            <meta name="twitter:title" content={META.TITLE} />
-            <meta name="twitter:description" content={META.DESCRIPTION} />
-            <meta
+            <Meta property="og:image:alt" content={META.OG_IMAGE_ALT} />
+            <Meta name="twitter:card" content={META.TWITTER_CARD} />
+            <Meta name="twitter:title" content={META.TITLE} />
+            <Meta name="twitter:description" content={META.DESCRIPTION} />
+            <Meta
               name="twitter:image"
               content={`${META.URL}${META.TWITTER_IMAGE}`}
             />
-            <meta name="twitter:image:alt" content={META.TWITTER_IMAGE_ALT} />
-            <meta name="twitter:creator" content={META.TWITTER_CREATOR} />
-            <meta name="twitter:creator:id" content={META.TWITTER_CREATOR_ID} />
-            <meta name="robots" content="index, follow" />
-            <meta name="googlebot" content="index, follow" />
-            <meta name="color-scheme" content={META.COLOR_SCHEME} />
-            <meta name="theme-color" content={META.THEME_COLOR} />
+            <Meta name="twitter:image:alt" content={META.TWITTER_IMAGE_ALT} />
+            <Meta name="twitter:creator" content={META.TWITTER_CREATOR} />
+            <Meta name="twitter:creator:id" content={META.TWITTER_CREATOR_ID} />
+            <Meta name="robots" content="index, follow" />
+            <Meta name="googlebot" content="index, follow" />
+            <Meta name="color-scheme" content={META.COLOR_SCHEME} />
+            <Meta name="theme-color" content={META.THEME_COLOR} />
           </MetaProvider>
           <StructuredData
             schema={{ '@type': 'WebSite', name: META.TITLE, url: META.URL }}
@@ -52,7 +53,7 @@ export default function App() {
           <main>
             <Suspense>{props.children}</Suspense>
           </main>
-          <Footer src="/images/epoxide-logo-circle.svg" />
+          <Footer src={epoxideLogo} />
         </>
       )}
     >

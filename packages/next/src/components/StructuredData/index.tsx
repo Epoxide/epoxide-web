@@ -1,7 +1,7 @@
-import type { StructuredDataWebSite } from '@epoxide/web-types'
+import type { WebSite } from 'schema-dts'
 
 interface StructuredDataProps {
-  schema: StructuredDataWebSite
+  schema: WebSite
 }
 
 export function StructuredData({ schema }: StructuredDataProps) {

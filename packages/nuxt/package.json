@@ -25,13 +25,13 @@
   "license": "GPL-3.0-or-later",
   "devDependencies": {
     "eslint-plugin-vue": "catalog:eslint",
+    "schema-dts": "catalog:",
     "vite": "^8.3.5",
     "vue-tsc": "^3.3.13"
   },
   "dependencies": {
     "@epoxide/web-assets": "workspace:*",
     "@epoxide/web-constants": "workspace:*",
-    "@epoxide/web-types": "workspace:*",
     "nuxt": "4.6.2",
     "vue": "^3.5.44",
     "vue-router": "^5.4.0"

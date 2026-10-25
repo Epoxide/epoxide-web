@@ -24,12 +24,12 @@
   },
   "devDependencies": {
     "eslint-plugin-solid": "catalog:eslint",
+    "schema-dts": "catalog:",
     "vite": "^8.3.5"
   },
   "dependencies": {
     "@epoxide/web-assets": "workspace:*",
     "@epoxide/web-constants": "workspace:*",
-    "@epoxide/web-types": "workspace:*",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^1.0.0",
     "@solidjs/start": "^2.1.0",

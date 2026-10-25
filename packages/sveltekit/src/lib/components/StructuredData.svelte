@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { StructuredDataWebSite } from '@epoxide/web-types'
+  import type { WebSite } from 'schema-dts'
 
-  export let schema: StructuredDataWebSite
+  export let schema: WebSite
 
   $: modifiedSchema = JSON.stringify({
     ...schema,

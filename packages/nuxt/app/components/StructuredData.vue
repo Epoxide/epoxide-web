@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { StructuredDataWebSite } from '@epoxide/web-types'
+import type { WebSite } from 'schema-dts'
 
 export interface Props {
-  schema: StructuredDataWebSite
+  schema: WebSite
 }
 
 withDefaults(defineProps<Props>(), {})

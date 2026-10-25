@@ -7,7 +7,8 @@ packages:
   - packages/solid-start
   - packages/sveltekit
   - packages/tests
-  - packages/types
+catalog:
+  schema-dts: ^2.1.0
 catalogs:
   commitlint:
     '@commitlint/cli': ^21.2.4

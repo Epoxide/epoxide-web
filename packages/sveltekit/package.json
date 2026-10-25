@@ -31,13 +31,13 @@
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
     "eslint-plugin-svelte": "catalog:eslint",
     "prettier-plugin-svelte": "^4.1.1",
+    "schema-dts": "catalog:",
     "svelte": "^5.57.2",
     "svelte-check": "^4.7.7",
     "vite": "^8.3.5"
   },
   "dependencies": {
     "@epoxide/web-assets": "workspace:*",
-    "@epoxide/web-constants": "workspace:*",
-    "@epoxide/web-types": "workspace:*"
+    "@epoxide/web-constants": "workspace:*"
   }
 }

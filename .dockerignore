@@ -1,3 +1,7 @@
+packages/astro
+packages/nuxt
+packages/solid-start
+packages/sveltekit
 **/node_modules
 **/.next
 **/.nuxt

@@ -8,5 +8,8 @@ export default defineNuxtConfig({
     },
   },
   devtools: { enabled: true },
-  compatibilityDate: '2025-08-03',
+  routeRules: {
+    '/': { prerender: true },
+  },
+  compatibilityDate: '2026-10-25',
 })

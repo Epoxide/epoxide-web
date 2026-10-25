@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NOT_FOUND } from '@epoxide/web-constants'
-import type { NuxtError } from '#app'
+import type { NuxtError } from 'nuxt/app'
 
 export interface Props {
   error: NuxtError
@@ -9,12 +9,14 @@ export interface Props {
 defineProps<Props>()
 </script>
 
-<template v-if="error.statusCode === 404">
+<template>
   <NuxtLayout>
-    <h1 class="title">{{ NOT_FOUND.TITLE }}</h1>
-    <section class="links">
-      <a href="/">{{ NOT_FOUND.GO_BACK }}</a>
-    </section>
+    <template v-if="error.status === 404">
+      <h1 class="title">{{ NOT_FOUND.TITLE }}</h1>
+      <section class="links">
+        <a href="/">{{ NOT_FOUND.GO_BACK }}</a>
+      </section>
+    </template>
   </NuxtLayout>
 </template>
 

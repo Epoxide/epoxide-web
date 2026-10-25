@@ -1,15 +1,21 @@
 <script setup lang="ts">
+import { useHead } from 'nuxt/app'
 import type { WebSite } from 'schema-dts'
 
 export interface Props {
   schema: WebSite
 }
 
-withDefaults(defineProps<Props>(), {})
-</script>
+const props = withDefaults(defineProps<Props>(), {})
 
-<template>
-  <component :is="'script'" type="application/ld+json">
-    {{ JSON.stringify({ ...schema, '@context': 'https://schema.org' }) }}
-  </component>
-</template>
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      tagPosition: 'bodyClose',
+      innerHTML: () =>
+        JSON.stringify({ ...props.schema, '@context': 'https://schema.org' }),
+    },
+  ],
+})
+</script>

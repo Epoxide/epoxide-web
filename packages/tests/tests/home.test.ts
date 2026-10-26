@@ -20,6 +20,13 @@ test('has h1 with text epoxide', async ({ page }) => {
   await expect(page.locator('h1')).toHaveText(HOME.TITLE)
 })
 
+test('has link to R2AT', async ({ page }) => {
+  await page.goto('/')
+  await expect(
+    page.locator('section').getByRole('link', { name: HOME.LINKS.R2AT.TEXT }),
+  ).toHaveAttribute('href', HOME.LINKS.R2AT.URL)
+})
+
 for (const [name, viewport] of Object.entries(VIEWPORT_SIZES)) {
   test(
     `home snapshot on ${name.toLowerCase()}`,

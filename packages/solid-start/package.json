@@ -25,15 +25,15 @@
   "devDependencies": {
     "eslint-plugin-solid": "catalog:eslint",
     "schema-dts": "catalog:",
-    "vite": "^8.3.5"
+    "vite": "^8.3.6"
   },
   "dependencies": {
     "@epoxide/web-assets": "workspace:*",
     "@epoxide/web-constants": "workspace:*",
-    "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^1.0.0",
-    "@solidjs/start": "^2.1.0",
-    "nitro": "3.0.260903-beta",
-    "solid-js": "^1.9.17"
+    "@solidjs/meta": "^0.29.8",
+    "@solidjs/router": "^1.0.1",
+    "@solidjs/start": "^2.2.1",
+    "nitro": "3.0.261103-rc",
+    "solid-js": "^1.9.18"
   }
 }

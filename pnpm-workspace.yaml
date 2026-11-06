@@ -21,13 +21,13 @@ catalogs:
     eslint-plugin-prettier: ^5.5.7
     eslint-plugin-promise: ^7.3.0
     eslint-plugin-solid: ^0.18.1
-    eslint-plugin-svelte: ^3.23.1
-    eslint-plugin-vue: ^10.11.1
-    globals: ^17.13.0
+    eslint-plugin-svelte: ^3.24.0
+    eslint-plugin-vue: ^10.12.0
+    globals: ^17.14.0
     typescript-eslint: ^8.72.1
   next:
-    next: ^16.4.3
-    eslint-config-next: ^16.4.3
+    next: ^16.4.5
+    eslint-config-next: ^16.4.5
   react:
     react: ^19.3.1
     react-dom: ^19.3.1

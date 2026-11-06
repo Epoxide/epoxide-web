@@ -26,14 +26,14 @@
   "devDependencies": {
     "eslint-plugin-vue": "catalog:eslint",
     "schema-dts": "catalog:",
-    "vite": "^8.3.5",
-    "vue-tsc": "^3.3.13"
+    "vite": "^8.3.6",
+    "vue-tsc": "^3.3.14"
   },
   "dependencies": {
     "@epoxide/web-assets": "workspace:*",
     "@epoxide/web-constants": "workspace:*",
-    "nuxt": "^4.6.2",
-    "vue": "^3.5.44",
+    "nuxt": "^4.6.4",
+    "vue": "^3.5.45",
     "vue-router": "^5.4.0"
   }
 }

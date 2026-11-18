@@ -29,11 +29,11 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",
-    "@astrojs/react": "^7.1.2",
+    "@astrojs/react": "^7.1.9",
     "@epoxide/web-assets": "workspace:*",
     "@epoxide/web-constants": "workspace:*",
     "@epoxide/web-next": "workspace:*",
-    "astro": "^7.4.5",
+    "astro": "^7.4.12",
     "react": "catalog:react",
     "react-dom": "catalog:react"
   }

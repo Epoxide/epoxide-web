@@ -4,7 +4,7 @@
   "description": "epoxide.se web monorepo",
   "type": "module",
   "engines": {
-    "node": "24.x.x"
+    "node": "26.x.x"
   },
   "devEngines": {
     "packageManager": {
@@ -14,7 +14,7 @@
     },
     "runtime": {
       "name": "node",
-      "version": "^24.22.3",
+      "version": "^26.13.1",
       "onFail": "download"
     }
   },
